@@ -52,6 +52,14 @@ public class JSONWeatherParser {
             weather.currentCondition.setCondition(Utils.getString("main",jsonWeather));
             weather.currentCondition.setIcon(Utils.getString("icon",jsonWeather));
 
+            JSONObject mainobj=Utils.getObject("main",jsonObject);
+            weather.currentCondition.setHumidity(Utils.getInt("humidity",mainobj));
+            weather.currentCondition.setPressure(Utils.getInt("pressure",mainobj));
+            weather.currentCondition.setMintemp(Utils.getFloat("temp_min",mainobj));
+            weather.currentCondition.setMaxtemp(Utils.getFloat("temp_max",mainobj));
+            weather.currentCondition.setTemp(Utils.getDouble("temp",mainobj));
+
+
             JSONObject windobj=Utils.getObject("wind",jsonObject);
             weather.wind.setSpeed(Utils.getFloat("speed",windobj));
             weather.wind.setDeg(Utils.getFloat("deg",windobj));
